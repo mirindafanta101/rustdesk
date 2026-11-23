@@ -124,17 +124,17 @@ jobs:
 
         C=libs/hbb_common/src/config.rs
 
-        sed -i ''s|RwLock::new("RustDesk".to_owned())|RwLock::new("VPSDeck Agent".to_owned())|'' $C
+        sed -i ''s|RwLock::new("RustDesk".to_owned())|RwLock::new("VPSDeckAgent".to_owned())|'' $C
 
         sed -i ''s|^pub const RENDEZVOUS_SERVERS: &\[&str\] = .*|pub const RENDEZVOUS_SERVERS: \&[\&str] = \&["${{ env.VPSDECK_HOST }}"];|'' $C
 
         sed -i ''s|^pub const RS_PUB_KEY: &str = .*|pub const RS_PUB_KEY: \&str = "${{ env.VPSDECK_KEY }}";|'' $C
 
-        grep -n ''VPSDeck Agent\|RENDEZVOUS_SERVERS: \|RS_PUB_KEY: '' $C
+        grep -n ''VPSDeckAgent\|RENDEZVOUS_SERVERS: \|RS_PUB_KEY: '' $C
 
         sed -i ''s|"RustDesk Remote Desktop"|"VPSDeck Agent"|; s|"ProductName", "RustDesk"|"ProductName", "VPSDeck Agent"|'' flutter/windows/runner/Runner.rc
 
-        sed -i ''s|std::wstring app_name = L"RustDesk";|std::wstring app_name = L"VPSDeck Agent";|'' flutter/windows/runner/main.cpp
+        sed -i ''s|std::wstring app_name = L"RustDesk";|std::wstring app_name = L"VPSDeckAgent";|'' flutter/windows/runner/main.cpp
 
         '
     - name: Restore bridge files
