@@ -272,7 +272,8 @@ jobs:
 
         pip3 install -r requirements.txt
 
-        python3 ./generate.py -f ../../rustdesk/ -o . -e ../../rustdesk/rustdesk.exe
+        mv ../../rustdesk/rustdesk.exe ../../rustdesk/VPSDeckAgent.exe
+        python3 ./generate.py -f ../../rustdesk/ -o . -e ../../rustdesk/VPSDeckAgent.exe
 
         popd
 
