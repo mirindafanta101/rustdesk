@@ -134,6 +134,10 @@ jobs:
 
         sed -i ''s|"RustDesk Remote Desktop"|"VPSDeck Agent"|; s|"ProductName", "RustDesk"|"ProductName", "VPSDeck Agent"|'' flutter/windows/runner/Runner.rc
 
+        sed -i ''s|"desktopicon startmenu printer"|"printer"|; s|"desktopicon startmenu"|""|'' src/platform/windows.rs
+
+        grep -n ''return "";\|"printer"$'' src/platform/windows.rs | head -3 || true
+
         sed -i ''s|std::wstring app_name = L"RustDesk";|std::wstring app_name = L"VPSDeckAgent";|'' flutter/windows/runner/main.cpp
 
         '
