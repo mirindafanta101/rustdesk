@@ -296,6 +296,11 @@ jobs:
       with:
         name: VPSDeck-Agent
         path: out/VPSDeck-Agent.exe
+    - name: Remove old release asset
+      shell: bash
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: gh release delete-asset vpsdeck VPSDeck-Agent.exe -y -R ${{ github.repository }} || true
     - name: Publish to release vpsdeck
       uses: softprops/action-gh-release@de2c0eb89ae2a093876385947365aca7b0e5f844
       with:
